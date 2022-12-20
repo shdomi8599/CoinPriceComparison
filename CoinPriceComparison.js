@@ -8,7 +8,22 @@ let upbitMarketList = [];
 
 let upbitPick = [];
 
+let upbitNowCoin = [];
 
+let upbitCoinName = [];
+
+let newTr = document.createElement('tr');
+
+let newTd = document.createElement('td');
+
+let tbody = document.body.querySelector('tbody');
+
+let rank = 1;
+
+/**
+ * 참고자료 : https://reword12.tistory.com/entry/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-Unix-TimeStamp%EB%B3%80%ED%99%98-javascript
+ * 업비트의 타임스탬프를 시간으로 치환하기 위한 함수
+ */
 function Unix_timestamp(t) {
   var date = new Date(t * 1000);
   var year = date.getFullYear();
@@ -23,6 +38,7 @@ function Unix_timestamp(t) {
 /**
 배열 전용 필터 
 query에 해당하는 문자열을 가진 배열들만 따로 추출해서 새로운 배열로 만들어줌
+*현재 사용 용도 없음*
  */
 function filterItems(query) {
   return upbitCoinList.filter(function (el) {
@@ -51,12 +67,15 @@ fetch('https://api.upbit.com/v1/market/all?isDetails=false', options)
   .then(response => response.json())
   .then(response => upbit = response)
   .then(upbit => upbitKrwList = upbit.filter(function (rowData) { return rowData.market.indexOf('KRW') !== -1 }))
-  .then(upbitKrwList => fullList())
-  .then(upbitKrwList => fetch(`https://api.upbit.com/v1/ticker?markets=${upbitMarketList}`, options))
+  .then(fullList)
+  .then(() => fetch(`https://api.upbit.com/v1/ticker?markets=${upbitMarketList}`, options))
   .then(response => response.json())
   .then(response => upbitCoinList.push(response))
-  .then(response => upbitCoinList = upbitCoinList[0])
+  .then(() => upbitCoinList = upbitCoinList[0])
+  .then(upbitCoinSymbol)
   .catch(err => console.error(err));
+
+
 
 /**
  * upbitCoinList에서 코인 심볼명을 매개변수로 넣고 함수를 실행하면 심볼명에 맞는 코인이 upbitPick 안에 들어감
@@ -66,15 +85,79 @@ fetch('https://api.upbit.com/v1/market/all?isDetails=false', options)
  */
 function upbitCoinPickUp(name) {
   upbitPick = [];
+  upbitNowCoin = [];
   upbitPick = upbitCoinList.filter(function (rowData) { return rowData.market.indexOf(name) !== -1 })
-  console.log(`코인명 : ${name}`)
-  console.log(`현재 거래 가격 : ${upbitPick[0].trade_price}`)
-  console.log(`거래량 : ${upbitPick[0].acc_trade_volume}`)
-  console.log(`마지막 거래 시간 : ${Unix_timestamp((upbitPick[0].trade_timestamp / 1000).toFixed())}`)
-  console.log('거래소명 : 업비트')
+  upbitNowCoin.push(rank);
+  upbitNowCoin.push(name);
+  upbitNowCoin.push('업비트');
+  upbitNowCoin.push(upbitPick[0].trade_price.toLocaleString('ko-KR'));
+  upbitNowCoin.push(Math.floor(upbitPick[0].acc_trade_price_24h).toLocaleString('ko-KR'));
+  upbitNowCoin.push(Unix_timestamp((upbitPick[0].trade_timestamp / 1000).toFixed()));
+  upbitNowCoin.push('0.005BTC');
+  rank++;
 }
 
-function any(_name) {
-  var add = "";
-  return add + _name + add;
+
+
+/**
+ * (1)
+ * 코인 심볼명만 추출 
+ */
+function upbitCoinSymbol() {
+  for (i of upbitMarketList) {
+    upbitCoinName.push(i.slice(4, 7))
+  }
+  upbitCoinSetting()
 }
+
+/**
+ * (2)
+ * (1)로 전달
+ * 업비트 거래소의 모든 KRW 코인 호출 및 td 삽입
+ * upbitCoinSymbol 함수안에 넣어서 활용
+ */
+function upbitCoinSetting() {
+  for (i of upbitCoinName) {
+    upbitCoinPickUp(i);
+    tdUpbitCreator()
+  }
+  filter1()
+}
+
+/**
+ * (3)
+ * (2)로 전달
+ * upbitCoinPickUp(name)함수에서 upbitNowCoin배열에 push한 값들을 활용해서
+ * 새로운 tr 1줄과 td 7개를 생성해주는 작업 
+ */
+function tdUpbitCreator() {
+  let newTr = document.createElement('tr');
+  tbody.appendChild(newTr)
+  for (let i = 0; i < 7; i++) {
+    let newTd = document.createElement('td');
+    newTr.appendChild(newTd).innerText = upbitNowCoin[i];
+  }
+}
+
+/**
+ * (4)
+ * (2)로 전달
+ * 가져온 코인 데이터들의 td값이 모두 채워졌을 때, 실행할 수 있도록
+ * upbitCoinSetting 함수 안에 넣어두었다.
+ */
+function filter1() {
+  allTd = document.querySelectorAll('td');
+  allTr = tbody.querySelectorAll('tr');
+}
+
+// let arr = [];
+
+// for (i of allTd) {
+//   arr.push(i)
+// }
+
+
+// function arrSolution(n,...arr) {
+//   return arr[n];
+//   }
+
