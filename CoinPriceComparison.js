@@ -118,7 +118,7 @@ function volumeReload(x = 1) {
   fetch('https://api.upbit.com/v1/market/all?isDetails=false', options)
     .then(response => response.json())
     .then(response => upbit = response)
-    .then(upbit => upbitKrwList = upbit.filter(function (rowData) { return rowData.market.indexOf('KRW') !== -1 }))
+    .then(upbit => upbitKrwList = upbit.filter(function (data) { return data.market.indexOf('KRW') !== -1 }))
     .then(upbitfullListing)
     .then(() => fetch(`https://api.upbit.com/v1/ticker?markets=${upbitMarketList}`, options))
     .then(response => response.json())
@@ -176,8 +176,9 @@ function upbitCoinSymbol() {
  * upbitCoinSymbol 함수안에 넣어서 활용
  */
 function upbitCoinSetting() {
-  for (i of upbitCoinName) {
-    upbitCoinPickUp(i);
+  //원래는 i of upbitCoinName을 써서 전체 코인을 호출해서 업비트 전체 코인을 보고있었다가 줄임
+  for (let i = 0; i <4; i++) {
+    upbitCoinPickUp(upbitCoinName[i]);
     tdUpbitCreator()
   }
 }
@@ -191,6 +192,7 @@ function upbitCoinSetting() {
  * ex) upbitCoinPickUp('BTC')
  */
 function upbitCoinPickUp(name) {
+  rank =1;   //임시용
   upbitPick = [];
   upbitNowCoin = [];
   upbitPick = upbitCoinList.filter(function (rowData) { return rowData.market.indexOf(name) !== -1 })
@@ -200,7 +202,7 @@ function upbitCoinPickUp(name) {
   upbitNowCoin.push(upbitPick[0].trade_price.toLocaleString('ko-KR'));
   upbitNowCoin.push(Math.floor(upbitPick[0].acc_trade_price_24h).toLocaleString('ko-KR'));
   upbitNowCoin.push(Unix_timestamp((upbitPick[0].trade_timestamp / 1000).toFixed()));
-  upbitNowCoin.push('0.005BTC');
+  upbitNowCoin.push('0.05%');
   rank++;
 }
 

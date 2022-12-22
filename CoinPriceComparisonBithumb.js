@@ -23,7 +23,7 @@ const bithumbOptions = {
  * bithumbPickCoin(name) 함수에서 사용되는 템플릿 리터럴에 검색용으로 넣기 위한 함수
  */
 function bithumbCoinPickUp(name) {
-    bithumbCoinName = bithumbCoinList.filter(function (rowData) { return rowData.indexOf(name) !== -1 })
+    bithumbCoinName = bithumbCoinList.filter(function (data) { return data.indexOf(name) !== -1 })
     return bithumbCoinName[0]
 }
 
@@ -34,7 +34,7 @@ fetch('https://api.bithumb.com/public/ticker/ALL_KRW', bithumbOptions)
     .then(response => bithumb = response)
     .then(() => bithumbCoinList.push(Object.keys(bithumb.data)))
     .then(() => bithumbCoinList = bithumbCoinList[0])
-    .then(() => bithumbPickCoin("BTC"))
+    // .then(() => bithumbPickCoin("BTC"))
     .catch(err => console.error(err));
 
 /**
@@ -42,7 +42,7 @@ fetch('https://api.bithumb.com/public/ticker/ALL_KRW', bithumbOptions)
  */
 function bithumbPickCoin(name) {
     bithumbPick = [];
-    bithumbCoinName = bithumbCoinList.filter(function (rowData) { return rowData.indexOf(name) !== -1 });
+    bithumbCoinName = bithumbCoinList.filter(function (data) { return data.indexOf(name) !== -1 });
     fetch(`https://api.bithumb.com/public/transaction_history/${bithumbCoinName[0]}_KRW`, bithumbOptions)
         .then(response => response.json())
         .then(response => bithumbPick.push(response.data[19]))
@@ -65,8 +65,8 @@ function forBithumbPick() {
     bithumbNowCoin.push(Number(bithumbPick.price).toLocaleString('ko-KR'));
     bithumbNowCoin.push(Math.floor(bithumbVolume.data.acc_trade_value).toLocaleString('ko-KR'));
     bithumbNowCoin.push(bithumbPick.transaction_date);
-    bithumbNowCoin.push('0.005BTC');
-    console.log(bithumbNowCoin);
-    console.log(upbitNowCoin);
+    bithumbNowCoin.push('0.25%');
+    // console.log(bithumbNowCoin);
+    // console.log(upbitNowCoin);
 }
 

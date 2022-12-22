@@ -6,12 +6,69 @@
 }
 
 * {
-    font-family: 'NEXON Lv1 Gothic OTF';
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
 }
 
+*,
+:after,
+:before {
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+:root {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    cursor: default;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    -moz-tab-size: 4;
+    tab-size: 4
+}
+
+html,
+body {
+    height: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+button {
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+
+* {
+    font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+body {
+    display: grid;
+    grid-template-rows: 1fr 10fr 1fr;
+    padding-top: 75px;
+}
 
 /* 글자는 rem으로 높이와 너비는 vh와 vw로 대대적인 개편을 진행해야할듯
 사용자의 환경에 맞게 /
@@ -22,135 +79,114 @@
 header {
     position: fixed;
     width: 100%;
-    margin: 0;
     top: 0;
     left: 0;
 }
 
 nav ul {
     background-color: black;
-    height: 70px;
-    padding: 0px;
+    height: 8vh;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 nav ul li {
+    flex: 1;
     list-style: none;
-    display: inline-block;
-    width: 20%;
     color: white;
-    padding: 25px;
+    /* padding: 3vh; */
     text-align: center;
+    padding: 2.7vh 0;
     border: 1px solid white;
-    box-sizing: border-box;
-    border-collapse: collapse;
-    margin-right: -5.3px;
-}
 
-/*nav 관리자용 페이지를 넣었을 경우
-nav ul li {
-    list-style: none;
-    display: inline-block;
-    width: 16.6666667;
-    color: white;
-    padding: 25px;
-    text-align: center;
-    border: 1px solid white;
-    margin-right: -5.3px;
 }
-*/
 
 .mainMenu {
+
     cursor: pointer;
+    display: flex;
+    justify-content: center;
 }
 
-.mainMenu:hover,
-.mainMenu:active {
+.mainMenu:hover {
     color: yellow;
+}
+
+.mainMenu:active {
+    position: relative;
+    top: 0.3vh;
 }
 
 /*
 중단
 */
+section {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr 4fr;
+}
 
 h1 {
     text-align: center;
-    font-size: 100px;
-    margin: 80px 0px 30px;
+    font-size: 7rem;
 }
 
 #searchCoin {
     text-align: center;
+    max-height: 7vh;
 }
 
 #searchCoinText {
-    font-size: 30px;
+    font-size: 2rem;
 }
 
 #searchCoin_btn {
-    font-size: 20px;
+    font-size: 1.5rem;
+    border: 0.1rem solid black;
 }
 
 #nowCoin {
-    font-size: 25px;
+    font-size: 2rem;
     color: red;
-    display: inline-block;
-    padding: 20px;
     width: 100%;
     text-align: center;
     margin: 0 auto;
-    padding-bottom: 30px;
 }
 
 #coinImg {
-    height: 20px;
-    width: 20px;
-}
-
-/* #allFilter {
-    text-align: center;
-    padding-bottom: 10px;
-    margin-left: 150px;
-} */
-#highFilter,
-#lowFilter {
     display: inline-block;
+    height: auto;
+    width: 3vh;
     position: relative;
-    top: 10px;
-
+    top: 0.3vh;
 }
 
-#price_high,
-#price_low,
-#volume_high,
-#volume_low {
+.imgBtn {
+    position: absolute;
     padding: 0;
     border: 0;
-}
-
-
-
-#nowPriceText,
-#nowVolumeText {
-    display: inline-block;
-    margin-bottom: 20px;
-}
-
-.chevronImg {
-    max-width: 10px;
     height: auto;
+    width: 0.7rem;
 }
 
-.imgBtn :hover{
+#price_low,
+#volume_low {
+    bottom: 543px;
+}
+
+
+.imgBtn :hover {
     background-color: yellow;
 }
 
-.imgBtn:active {
-    background-color: black
-}
-
-/* #nowPrice,#nowVolume{
-    padding-bottom: 20px;
+/* .imgBtn:active {
+        position: relative;
+        top:2vh;
 } */
+
+
 /*
 테이블
 */
@@ -164,8 +200,8 @@ h1 {
     text-align: center;
 }
 
-#categori {
-    width: 18%;
+.categori {
+    font-size: 1rem;
 }
 
 thead tr {
@@ -185,7 +221,8 @@ tbody td {
 */
 
 footer {
-    margin-top: 100px;
+    padding-top: 4vh;
+    height: 10vh;
 }
 
 #copyright {
