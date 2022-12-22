@@ -31,8 +31,7 @@ function bithumbCoinPickUp(name) {
 
 fetch('https://api.bithumb.com/public/ticker/ALL_KRW', bithumbOptions)
     .then(response => response.json())
-    .then(response => bithumb.push(response))
-    .then(() => bithumb = bithumb[0])
+    .then(response => bithumb = response)
     .then(() => bithumbCoinList.push(Object.keys(bithumb.data)))
     .then(() => bithumbCoinList = bithumbCoinList[0])
     .then(() => bithumbPickCoin("BTC"))

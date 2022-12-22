@@ -73,8 +73,7 @@ fetch('https://api.upbit.com/v1/market/all?isDetails=false', options)
   .then(upbitfullListing)
   .then(() => fetch(`https://api.upbit.com/v1/ticker?markets=${upbitMarketList}`, options))
   .then(response => response.json())
-  .then(response => upbitCoinList.push(response))
-  .then(() => upbitCoinList = upbitCoinList[0])
+  .then(response => upbitCoinList = response)
   .then(() => upbitFinalEvent[0].price(1))
   .catch(err => console.error(err));
 
@@ -98,8 +97,7 @@ function priceReload(x = 1) {
     .then(upbitfullListing)
     .then(() => fetch(`https://api.upbit.com/v1/ticker?markets=${upbitMarketList}`, options))
     .then(response => response.json())
-    .then(response => upbitCoinList.push(response))
-    .then(() => upbitCoinList = upbitCoinList[0])
+    .then(response => upbitCoinList = response)
     .then(() => upbitFinalEvent[0].price(x))
     .catch(err => console.error(err));
 };
@@ -124,8 +122,7 @@ function volumeReload(x = 1) {
     .then(upbitfullListing)
     .then(() => fetch(`https://api.upbit.com/v1/ticker?markets=${upbitMarketList}`, options))
     .then(response => response.json())
-    .then(response => upbitCoinList.push(response))
-    .then(() => upbitCoinList = upbitCoinList[0])
+    .then(response => upbitCoinList = response)
     .then(() => upbitFinalEvent[1].volume(x))
     .catch(err => console.error(err));
 }

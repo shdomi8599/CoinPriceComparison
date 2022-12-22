@@ -42,16 +42,20 @@
             <th class="categori">거래소</th>
             <th class="categori" id="nowPrice"><span id="nowPriceText">현재 가격(KRW)</span>
                 <div id="highFilter">
-                    <button id="price_high">⬆</button>
+                    <button class= "imgBtn"id="price_high"><img class="chevronImg"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABf0lEQVR4nO3YTU/CQBSF4de4NGrxA/wANfH/r0xcuVNIQBS1ioAK/hNMk2kyIVBL70ztxHuSu2140uFMc0Gj0Wg0Go3m36UG3AAxcEqgiYAuMDczCRETAT0LYWNOCOg43S9BpDMOAVMD+hmIIDCHwHMORDoj4JgKIl7WQFQSUy+ISOcdOKoCIhYgKoFpAK8OEOkk/6+D0BHpPJWJSY7AmweEjdkvAzH0iJibGfjENIGPEhBzC7PnGtECPgv+oFjwf+qZ77Y/RwzNcZTU9IP59BHlTIBYbKC64M30JZgE8SU438tqtC5ovA6wsy7iHJh6apyGELNdBuIxZ202BDXezoO5AGaeES7upLsszIbgTRStyaagTK6zHtwp8MCusOtbBUtlkPXQ3RVLAy+1KMBMzNsstAFxUocO6n68zlop+mUT0naMsDFT10uLaMVGJLMxPGJGks3L4nrn1jPCvstmrhD2hiQBXAFblJdL4Nt8syUXaNDZNPebRqPRaDQacuQHzHInXz4J+DIAAAAASUVORK5CYII="></button>
                     <br>
-                    <button id="price_low">⬇</button>
+                    <button class= "imgBtn" id="price_low"><img class="chevronImg"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA60lEQVR4nO3YwQqDMBAE0PmJhPr/v9JbPdVDPsde4qXQatzZTQIzIHjpjk+L4AKKoiiKoihTJgN4AnjV88jeldWbALwB7PUoABbOdcb1pq9hUZjE7P01zBuTmL1nw7ww1N6rw9gYeu/aMOw4NuNbJdcZrb0vNsSCuYvYzyCtj9jyN7N2PbwLlhEQEZgwhCcmHOGB6YZgYrojGK/JzfjbDHIsd7X7k+iFKZ6IKEyJQHhjSiTCC9MFwcZ0RbAwQyCsmKEQlq+84RB3vruHRbRsQoZHXNlNTYP4ty2cDnEk1yVB9N5YURRFURTMnA9ByCgh6/888AAAAABJRU5ErkJggg=="></button>
                 </div>
             </th>
             <th class="categori" id="nowVolume"><span id="nowVolumeText">거래대금(24H)</span>
                 <div id="lowFilter">
-                    <button id="volume_high">⬆</button>
+                    <button class= "imgBtn" id="volume_high"><img class="chevronImg"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABf0lEQVR4nO3YTU/CQBSF4de4NGrxA/wANfH/r0xcuVNIQBS1ioAK/hNMk2kyIVBL70ztxHuSu2140uFMc0Gj0Wg0Go3m36UG3AAxcEqgiYAuMDczCRETAT0LYWNOCOg43S9BpDMOAVMD+hmIIDCHwHMORDoj4JgKIl7WQFQSUy+ISOcdOKoCIhYgKoFpAK8OEOkk/6+D0BHpPJWJSY7AmweEjdkvAzH0iJibGfjENIGPEhBzC7PnGtECPgv+oFjwf+qZ77Y/RwzNcZTU9IP59BHlTIBYbKC64M30JZgE8SU438tqtC5ovA6wsy7iHJh6apyGELNdBuIxZ202BDXezoO5AGaeES7upLsszIbgTRStyaagTK6zHtwp8MCusOtbBUtlkPXQ3RVLAy+1KMBMzNsstAFxUocO6n68zlop+mUT0naMsDFT10uLaMVGJLMxPGJGks3L4nrn1jPCvstmrhD2hiQBXAFblJdL4Nt8syUXaNDZNPebRqPRaDQacuQHzHInXz4J+DIAAAAASUVORK5CYII="></button>
                     <br>
-                    <button id="volume_low">⬇</button>
+                    <button class= "imgBtn" id="volume_low"><img class="chevronImg"
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA60lEQVR4nO3YwQqDMBAE0PmJhPr/v9JbPdVDPsde4qXQatzZTQIzIHjpjk+L4AKKoiiKoihTJgN4AnjV88jeldWbALwB7PUoABbOdcb1pq9hUZjE7P01zBuTmL1nw7ww1N6rw9gYeu/aMOw4NuNbJdcZrb0vNsSCuYvYzyCtj9jyN7N2PbwLlhEQEZgwhCcmHOGB6YZgYrojGK/JzfjbDHIsd7X7k+iFKZ6IKEyJQHhjSiTCC9MFwcZ0RbAwQyCsmKEQlq+84RB3vruHRbRsQoZHXNlNTYP4ty2cDnEk1yVB9N5YURRFURTMnA9ByCgh6/888AAAAABJRU5ErkJggg=="></button>
                 </div>
             </th>
             <th class="categori">최종 거래시간</th>
@@ -65,6 +69,7 @@
     </footer>
     <script src="CoinPriceComparison.js"></script>
     <script src="CoinPriceComparisonBithumb.js"></script>
+    <script src="CoinPriceComparisonKorbit.js"></script>
 </body>
 
 </html>
