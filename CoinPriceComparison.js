@@ -58,6 +58,26 @@ function Unix_timestamp(t) {
   return year + "-" + month.substr(-2) + "-" + day.substr(-2) + " " + hour.substr(-2) + ":" + minute.substr(-2) + ":" + second.substr(-2);
 }
 
+/**
+배열 전용 필터 
+query에 해당하는 문자열을 가진 배열들만 따로 추출해서 새로운 배열로 만들어줌
+*현재 사용 용도 없음*
+ */
+function filterItems(query) {
+  return upbitCoinList.filter(function (el) {
+    return el.toLowerCase().indexOf(query.toLowerCase()) > -1;
+  })
+}
+
+/**
+ * marketList에 모든 KRW마켓의 코인 종류를 담기 위한 함수
+ */
+function fullList() {
+  for (let i = 0; i < upbitKrwList.length; i++) {
+    upbitMarketList.push(upbitKrwList[i].market);
+  }
+}
+
 /** 
  * 업비트 api 데이터
  * USDT 마켓과 BTC 마켓을 제외하고 KRW 마켓만 추출하기 위한 작업을 위해 최초 1회 실행 되고
@@ -70,9 +90,10 @@ fetch('https://api.upbit.com/v1/market/all?isDetails=false', options)
   .then(response => response.json())
   .then(response => upbit = response)
   .then(upbit => upbitKrwList = upbit.filter(function (rowData) { return rowData.market.indexOf('KRW') !== -1 }))
-  .then(upbitfullListing)
+  .then(fullList)
   .then(() => fetch(`https://api.upbit.com/v1/ticker?markets=${upbitMarketList}`, options))
   .then(response => response.json())
+<<<<<<< HEAD
   .then(response => upbitCoinList = response)
   .then(() => upbitFinalEvent[0].price(1))
   .catch(err => console.error(err));
@@ -185,6 +206,16 @@ function upbitCoinSetting() {
 /**
  * 마무리 작업 중 (3)번째 작업
  * (2)로 전달
+=======
+  .then(response => upbitCoinList.push(response))
+  .then(() => upbitCoinList = upbitCoinList[0])
+  .then(upbitCoinSymbol)
+  .catch(err => console.error(err));
+
+
+
+/**
+>>>>>>> f898085238555ee429a62f0c405dc7304da4e416
  * upbitCoinList에서 코인 심볼명을 매개변수로 넣고 함수를 실행하면 심볼명에 맞는 코인이 upbitPick 안에 들어감
  * 새롭게 검색(호출)되기 전까진 값을 유지하다가 새 검색 시 초기화 후 리턴
  * 나중에 검색용으로 만들 예정
@@ -204,8 +235,35 @@ function upbitCoinPickUp(name) {
   rank++;
 }
 
+
+
 /**
- * 마무리 작업 중 (4)번째 작업
+ * (1)
+ * 코인 심볼명만 추출 
+ */
+function upbitCoinSymbol() {
+  for (i of upbitMarketList) {
+    upbitCoinName.push(i.slice(4, 7))
+  }
+  upbitCoinSetting()
+}
+
+/**
+ * (2)
+ * (1)로 전달
+ * 업비트 거래소의 모든 KRW 코인 호출 및 td 삽입
+ * upbitCoinSymbol 함수안에 넣어서 활용
+ */
+function upbitCoinSetting() {
+  for (i of upbitCoinName) {
+    upbitCoinPickUp(i);
+    tdUpbitCreator()
+  }
+  filter1()
+}
+
+/**
+ * (3)
  * (2)로 전달
  * upbitCoinPickUp(name)함수에서 upbitNowCoin배열에 push한 값들을 활용해서
  * 새로운 tr 1줄과 td 7개를 생성해주는 작업 
