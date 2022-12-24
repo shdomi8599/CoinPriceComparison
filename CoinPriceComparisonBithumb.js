@@ -12,7 +12,7 @@ let bithumbNowCoin = [];
 // 현재 검색된 코인의 거래량 데이터를 보관하는 배열
 let bithumbVolume = [];
 // 테스트용, 테이블 랭킹용 숫자
-let bithumbRank = 1;
+// let bithumbRank = 1;
 
 const bithumbOptions = {
     method: 'GET',
@@ -41,7 +41,9 @@ fetch('https://api.bithumb.com/public/ticker/ALL_KRW', bithumbOptions)
  * name에 코인 심볼명을 문자열의 형태로 입력받으면 그 코인의 최신 체결가와 거래량을 배열에 저장해주는 함수
  */
 function bithumbPickCoin(name) {
+    bithumbVolume = [];
     bithumbPick = [];
+    bithumbNowCoin = [];
     bithumbCoinName = bithumbCoinList.filter(function (data) { return data.indexOf(name) !== -1 });
     fetch(`https://api.bithumb.com/public/transaction_history/${bithumbCoinName[0]}_KRW`, bithumbOptions)
         .then(response => response.json())
@@ -52,6 +54,8 @@ function bithumbPickCoin(name) {
         .then(response => bithumbVolume.push(response))
         .then(() => bithumbVolume = bithumbVolume[0])
         .then(forBithumbPick)
+        .then(()=>callBundle(bithumbNowCoin))
+        .then(objBithumbData)
         .catch(err => console.error(err));
 }
 
@@ -59,12 +63,12 @@ function bithumbPickCoin(name) {
  * bithumbPickCoin(name)함수를 통해 수집한 데이터를 갖고와서 bithumbNowCoin배열안에 저장해주는 함수
  */
 function forBithumbPick() {
-    bithumbNowCoin.push(bithumbRank);
+    bithumbNowCoin.push('1');
     bithumbNowCoin.push(bithumbCoinName[0]);
     bithumbNowCoin.push('빗썸');
     bithumbNowCoin.push(Number(bithumbPick.price).toLocaleString('ko-KR'));
     bithumbNowCoin.push(Math.floor(bithumbVolume.data.acc_trade_value).toLocaleString('ko-KR'));
-    bithumbNowCoin.push(bithumbPick.transaction_date);
+    bithumbNowCoin.push(bithumbPick.transaction_date.slice(11));
     bithumbNowCoin.push('0.25%');
     // console.log(bithumbNowCoin);
     // console.log(upbitNowCoin);

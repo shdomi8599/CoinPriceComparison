@@ -7,76 +7,25 @@
 
 * {
     margin: 0;
-    padding: 0;
-    font: inherit;
-    color: inherit;
-}
-
-*,
-:after,
-:before {
-    box-sizing: border-box;
-    flex-shrink: 0;
-}
-
-:root {
-    -webkit-tap-highlight-color: transparent;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-    cursor: default;
-    line-height: 1.5;
-    overflow-wrap: break-word;
-    -moz-tab-size: 4;
-    tab-size: 4
-}
-
-html,
-body {
-    height: 100%;
-}
-
-img,
-picture,
-video,
-canvas,
-svg {
-    display: block;
-    max-width: 100%;
-}
-
-button {
-    background: none;
     border: 0;
-    cursor: pointer;
-}
-
-a {
-    text-decoration: none
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0
-}
-
-
-* {
+    box-sizing: border-box;
     font-family: 'NEXON Lv1 Gothic OTF';
 }
 
+
 body {
-    display: grid;
-    grid-template-rows: 1fr 10fr 1fr;
-    padding-top: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 120vh;
 }
 
-/* 글자는 rem으로 높이와 너비는 vh와 vw로 대대적인 개편을 진행해야할듯
-사용자의 환경에 맞게 /
-
-/*
+/*   
 상단
-*/
+  */
 header {
+    flex: 1;
     position: fixed;
     width: 100%;
     top: 0;
@@ -89,18 +38,19 @@ nav ul {
     flex-direction: row;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
+    padding: 0;
 }
 
 nav ul li {
     flex: 1;
     list-style: none;
     color: white;
-    /* padding: 3vh; */
     text-align: center;
-    padding: 2.7vh 0;
     border: 1px solid white;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mainMenu {
@@ -119,40 +69,52 @@ nav ul li {
     top: 0.3vh;
 }
 
-/*
+/*   
 중단
-*/
+  */
+
+
 section {
-    height: 100vh;
-    display: grid;
-    grid-template-rows: 0.5fr 0.5fr 0.5fr 4fr;
+    flex: 1;
+    width: 130vh;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.1rem;
 }
+
 
 h1 {
-    text-align: center;
-    font-size: 7rem;
+    font-size: 5rem;
+    padding-top: 8vh;
 }
+
 
 #searchCoin {
-    text-align: center;
-    max-height: 7vh;
-}
-
-#searchCoinText {
-    font-size: 2rem;
-}
-
-#searchCoin_btn {
-    font-size: 1.5rem;
-    border: 0.1rem solid black;
+    padding: 2vh 0;
 }
 
 #nowCoin {
     font-size: 2rem;
-    color: red;
-    width: 100%;
+    padding: 2vh 0;
+}
+
+#searchCoin_btn {
+    font-size: 1.3rem;
+    border: 0.1rem solid black;
+}
+
+#searchCoinText {
+    font-size: 2rem;
+    border-bottom: 1px solid black;
     text-align: center;
-    margin: 0 auto;
+}
+
+#searchCoin_btn:active {
+    position: relative;
+    top: 0.1vh;
 }
 
 #coinImg {
@@ -163,68 +125,93 @@ h1 {
     top: 0.3vh;
 }
 
-.imgBtn {
+#time {
     position: absolute;
-    padding: 0;
-    border: 0;
-    height: auto;
-    width: 0.7rem;
+    top: 42vh;
+    left: 86.5vh;
 }
 
-#price_low,
-#volume_low {
-    bottom: 543px;
+#volumeBox {
+    display: flex;
+    flex-direction: row;
+}
+
+#volumeBox span{
+    display: inline-block;
+    padding-top: 6px;
+    padding-right: 2px;
+}
+
+#priceBox {
+ display: flex;
+ flex-direction: row;
+}
+
+#priceBox span{
+    display: inline-block;
+    padding-top: 6px;
+    padding-right: 2px;
+}
+
+#priceBox div{
+    font-size: 15px;
+}
+
+#volumeBox div{
+        font-size: 15px;
 }
 
 
-.imgBtn :hover {
-    background-color: yellow;
+
+#categoriBox {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 130vh;
+    border-bottom: 1px solid black;
+    padding-bottom: 3vh;
 }
 
-/* .imgBtn:active {
-        position: relative;
-        top:2vh;
-} */
 
-
-/*
-테이블
-*/
-
-#main_table {
-    width: 70%;
-    border-collapse: collapse;
-    border-spacing: 0px;
-    table-layout: fixed;
-    margin: 0 auto;
-    text-align: center;
+#resultBox {
+    flex: 8;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 130vh;
+    flex-direction: column;
 }
 
 .categori {
-    font-size: 1rem;
+    flex: 1;
+    text-align: center;
+    font-size: 1.3rem;
 }
 
-thead tr {
-    border-bottom: 2px solid black;
+.resultData {
+    flex: 1;
+    text-align: center;
 }
 
-tbody tr {
+.dataBundle {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 130vh;
+    flex-direction: row;
+    padding: 5vh 0;
     border-bottom: 1px solid rgb(204, 203, 203);
 }
 
-tbody td {
-    padding: 20px 0px;
-}
-
 /*
-하단
-*/
+  하단
+  */
 
 footer {
-    padding-top: 4vh;
-    height: 10vh;
-}
-
-#copyright {
-    text-align: center;
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -13,17 +13,20 @@ let coinoneNowCoin = {};
 // 현재 검색된 코인의 데이터들을 추출해서 새로 만든 배열
 let coinoneNowCoinLast = [];
 // 테스트용, 테이블 랭킹용 숫자
-let coinoneRank = 1;
+// let coinoneRank = 1;
 
 const coinoneOptions = { method: 'GET', headers: { accept: 'application/json' } };
 
 
+function coinoneLastCall(name) {
+    coinoneNowCoinLast = [];
 fetch('https://api.coinone.co.kr/public/v2/markets/KRW', coinoneOptions)
     .then(response => response.json())
     .then(response => coinone = response)
     .then(coinoneSymbol)
-    .then(forCoinoneData)
+    .then(() =>forCoinoneData(name))
     .catch(err => console.error(err));
+}
 
 
 /**
@@ -39,11 +42,14 @@ function coinoneSymbol() {
 /**
  * KRW마켓에 모든 코인들의 데이터를 가져오기 위한 함수
  */
-function forCoinoneData() {
+function forCoinoneData(name) {
     fetch('https://api.coinone.co.kr/public/v2/ticker_new/KRW', coinoneOptions)
         .then(response => response.json())
         .then(response => coinoneData = response.tickers)
-        .then(() => coinoneCoinData('btc'))
+        .then(()=> coinoneDataSerach(name))
+        .then(()=> coinoneCoinData(name))
+        .then(()=>callBundle(coinoneNowCoinLast))
+        .then(objCoinoneData)
         .catch(err => console.error(err));
 }
 
@@ -62,24 +68,12 @@ function coinoneDataSerach(name) {
  * coinoneDataSerach 함수로 얻은 인덱스로 coinoneNowCoinLast 배열안에 데이터를 저장하는 함수
  */
 function coinoneCoinData(name) {
-    coinoneDataSerach(name);
-    coinoneNowCoinLast.push(coinoneRank);
+    coinoneNowCoinLast.push('1');
     coinoneNowCoinLast.push(name.toUpperCase());
     coinoneNowCoinLast.push('코인원');
     coinoneNowCoinLast.push(Number(coinoneNowCoin.last).toLocaleString('ko-KR'));
     coinoneNowCoinLast.push(Math.floor(coinoneNowCoin.last * coinoneNowCoin.target_volume).toLocaleString('ko-KR'));
-    coinoneNowCoinLast.push(Unix_timestamp((coinoneNowCoin.timestamp / 1000).toFixed()));
+    coinoneNowCoinLast.push(Unix_timestamp((coinoneNowCoin.timestamp / 1000).toFixed()).slice(11));
     coinoneNowCoinLast.push('0.2%');
 }
 
-
-function coinList(name) {
-    upbitCoinPickUp(name.toUpperCase())
-    kobitPickCoin(name)
-    bithumbPickCoin(name.toUpperCase())
-    coinoneCoinData(name)
-    console.log(korbitNowCoinLast);
-    console.log(bithumbNowCoin);
-    console.log(upbitNowCoin);
-    console.log(coinoneNowCoinLast);
-}

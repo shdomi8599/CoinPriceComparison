@@ -13,7 +13,7 @@ let korbitNowCoin = [];
 // 현재 검색된 코인의 데이터들을 추출해서 새로 만든 배열
 let korbitNowCoinLast = [];
 // 테스트용, 테이블 랭킹용 숫자
-let korbitRank = 1;
+// let korbitRank = 1;
 
 const korbitOptions = { method: 'GET', headers: { accept: 'application/json' } };
 
@@ -22,7 +22,6 @@ fetch('https://api.korbit.co.kr/v1/ticker/detailed/all', korbitOptions)
     .then(response => korbit = response)
     .then(korbit => korbitCoinList = Object.keys(korbit))
     .then(korbitSymbol)
-    // .then(() => kobitPickCoin('xrp'))
     .catch(err => console.error(err));
 
 
@@ -54,25 +53,27 @@ function kobitCoinSearch(name) {
  * korbitPick 배열에 들어간 현재 검색된 코인의 데이터를 갖고오는 함수
  */
 function kobitPickCoin(name) {
+    korbitPick = [];
+    korbitNowCoin = [];
+    korbitNowCoinLast = [];
     kobitCoinSearch(name);
     fetch(`https://api.korbit.co.kr/v1/ticker/detailed?currency_pair=${korbitPick[0]}_krw`, korbitOptions)
         .then(response => response.json())
         .then(response => korbitNowCoin = response)
         .then(forKorbitPick)
+        .then(()=>callBundle(korbitNowCoinLast))
+        .then(objKorbitData)
         .catch(err => console.error(err));
 }
 
 
 
 function forKorbitPick() {
-    korbitNowCoinLast.push(korbitRank);
+    korbitNowCoinLast.push('1');
     korbitNowCoinLast.push(korbitPick[0].toUpperCase());
     korbitNowCoinLast.push('코빗');
     korbitNowCoinLast.push(Number(korbitNowCoin.last).toLocaleString('ko-KR'));
     korbitNowCoinLast.push(Math.floor(korbitNowCoin.last * korbitNowCoin.volume).toLocaleString('ko-KR'));
-    korbitNowCoinLast.push(Unix_timestamp((korbitNowCoin.timestamp / 1000).toFixed()));
+    korbitNowCoinLast.push(Unix_timestamp((korbitNowCoin.timestamp / 1000).toFixed()).slice(11));
     korbitNowCoinLast.push('0.15%');
-    // console.log(korbitNowCoinLast);
-    // console.log(upbitNowCoin);
-    // console.log(bithumbNowCoin);
 }
