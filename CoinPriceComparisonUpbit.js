@@ -16,6 +16,8 @@ let upbitCoinName = [];
 let upbitLastList = [];
 //순위 리스트를 위한 변수 rank
 // let rank = 1;
+//업비트 코인 영어이름
+let upbitEngName = [];
 
 
 /** 
@@ -37,6 +39,7 @@ fetch('https://api.upbit.com/v1/market/all?isDetails=false', options)
   .then(response => response.json())
   .then(response => upbit = response)
   .then(upbit => upbitKrwList = upbit.filter(function (rowData) { return rowData.market.indexOf('KRW') !== -1 }))
+  .then(upbitObject)
   .then(upbitfullListing)
   .then(() => fetch(`https://api.upbit.com/v1/ticker?markets=${upbitMarketList}`, options))
   .then(response => response.json())
@@ -44,6 +47,7 @@ fetch('https://api.upbit.com/v1/market/all?isDetails=false', options)
   .then(()=> upbitCoinPickUp(name))
   .then(()=>callBundle(upbitNowCoin))
   .then(objUpbitData)
+  .then(imgChange)
   .catch(err => console.error(err));
 }
 
@@ -56,6 +60,7 @@ function upbitfullListing() {
   for (let i = 0; i < upbitKrwList.length; i++) {
     upbitMarketList.push(upbitKrwList[i].market);
   }
+  upbitMarketList.splice(109,1)
 }
 
 /**
@@ -97,3 +102,5 @@ function upbitCoinPickUp(name) {
   upbitNowCoin.push(Unix_timestamp((upbitPick[0].trade_timestamp / 1000).toFixed()).slice(11));
   upbitNowCoin.push('0.05%');
 }
+
+

@@ -162,6 +162,16 @@ h1 {
 }
 
 
+ #filterPriceLow:active, #filterVolumeLow:active{
+    position: relative;
+    top: 0.3vh;
+}
+
+#filterVolumeHigh:active,#filterPriceHigh:active{
+    position: relative;
+    bottom: 0.3vh;
+}
+
 
 #categoriBox {
     flex: 1;

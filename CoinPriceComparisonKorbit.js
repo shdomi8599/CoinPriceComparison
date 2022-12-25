@@ -35,6 +35,7 @@ function korbitSymbol() {
     for (i of korbitCoinName) {
         korbitCoinNameLast.push(i.slice(0, -3))
     }
+    korbitCoinNameLast.splice(28,1)
 }
 
 /**
@@ -47,7 +48,6 @@ function kobitCoinSearch(name) {
         }
     }
 }
-
 
 /**
  * korbitPick 배열에 들어간 현재 검색된 코인의 데이터를 갖고오는 함수
@@ -65,6 +65,7 @@ function kobitPickCoin(name) {
         .then(objKorbitData)
         .catch(err => console.error(err));
 }
+
 
 
 
