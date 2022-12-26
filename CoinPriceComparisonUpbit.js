@@ -44,10 +44,12 @@ fetch('https://api.upbit.com/v1/market/all?isDetails=false', options)
   .then(() => fetch(`https://api.upbit.com/v1/ticker?markets=${upbitMarketList}`, options))
   .then(response => response.json())
   .then(response => upbitCoinList = response)
+  .then(upbitLastListing)
+  .then(upbitCoinSymbol)
   .then(()=> upbitCoinPickUp(name))
   .then(()=>callBundle(upbitNowCoin))
   .then(objUpbitData)
-  .then(imgChange)
+ .then(imgChange)
   .catch(err => console.error(err));
 }
 
@@ -69,6 +71,7 @@ function upbitfullListing() {
  upbitfullListing과 다른 용도  
  */
 function upbitLastListing() {
+  upbitLastList = [];
   for (let i = 0; i < upbitCoinList.length; i++) {
     upbitLastList.push(upbitCoinList[i].market);
   }
@@ -79,6 +82,7 @@ function upbitLastListing() {
  * 필터 이후의 코인 심볼명만 추출 
  */
 function upbitCoinSymbol() {
+  upbitCoinName = [];
   for (i of upbitLastList) {
     upbitCoinName.push(i.slice(4, 7))
   }
@@ -93,6 +97,7 @@ function upbitCoinSymbol() {
  * ex) upbitCoinPickUp('BTC')
  */
 function upbitCoinPickUp(name) {
+  if(upbitCoinName.indexOf(name) !== -1){
   upbitPick = upbitCoinList.filter(function (rowData) { return rowData.market.indexOf(name) !== -1 })
   upbitNowCoin.push('1');
   upbitNowCoin.push(name);
@@ -101,6 +106,8 @@ function upbitCoinPickUp(name) {
   upbitNowCoin.push(Math.floor(upbitPick[0].acc_trade_price_24h).toLocaleString('ko-KR'));
   upbitNowCoin.push(Unix_timestamp((upbitPick[0].trade_timestamp / 1000).toFixed()).slice(11));
   upbitNowCoin.push('0.05%');
+  }
+
 }
 
 

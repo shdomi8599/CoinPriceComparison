@@ -1,10 +1,3 @@
-/**
- * 
- */
-function coinKeyCall(obj, value) {
-    return Object.keys(obj).find(key => obj[key] === value);
-  }
-
 let changeName = '';
 
 let nowCoinName = document.body.querySelector('#nowCoinName')
@@ -23,6 +16,10 @@ let coinoneObj = {};
 
 let korbitObj = {};
 
+
+/**
+ * 이미지 삽입을 위한 업비트 영문명
+ */
 function upbitObject(){
 for (i of upbitKrwList){
     upbitKeyArr.push(i.market.slice(4))
@@ -81,13 +78,18 @@ let buttonEvent = searchButton.addEventListener('click', coinList);
 function coinList() {
     allArr = [];
     allrank = 0;
+    if (allCoin[searchTextBox.value] !== undefined){
     changeName = allCoin[searchTextBox.value]
     removeAllchild()
     upbitLastCall(changeName)
     kobitPickCoin(changeName.toLowerCase())
     bithumbPickCoin(changeName)
     coinoneLastCall(changeName.toLowerCase())
-    nowCoinName.innerText = searchTextBox.value
+    nowCoinName.innerText = searchTextBox.value;
+    }
+    else {
+        openErrorBox()
+    }
 }
 
 
@@ -100,6 +102,7 @@ let resultBox = document.body.querySelector('#resultBox');
 let allrank = 0;
 
 function callBundle(name) {
+    if(name[0] !== undefined){
     let div = document.createElement('div')
     resultBox.appendChild(div).setAttribute("class", "dataBundle");
     function callData() {
@@ -116,6 +119,8 @@ function callBundle(name) {
     callData()
 }
 
+}
+
 
 /**
  * 모든 자식 데이터 삭제
@@ -128,7 +133,7 @@ function removeAllchild() {
 }
 
 /**
- * 필터를 위한 데이터 비교 
+ * 필터를 위한 선언
  */
 let objUpbit = {};
 let objBithumb = {};
@@ -137,19 +142,9 @@ let objCoinone = {};
 
 let allArr = [];
 
-// function allObj() {
-//     for (let i = 0; i < upbitNowCoin.length; i++) {
-//         objUpbit[`key${i}`] = upbitNowCoin[i]
-//         objBithumb[`key${i}`] = bithumbNowCoin[i]
-//         objCoinone[`key${i}`] = coinoneNowCoinLast[i]
-//         objKorbit[`key${i}`] = korbitNowCoinLast[i]
-//     }
-//     allArr.push(objUpbit)
-//     allArr.push(objBithumb)
-//     allArr.push(objKorbit)
-//     allArr.push(objCoinone)
-// }
-
+/**
+ * 필터를 위한 데이터 삽입 작업
+ */
 function objUpbitData(){
 for (let i = 0; i < upbitNowCoin.length; i++) {
         objUpbit[`key${i}`] = upbitNowCoin[i]
@@ -178,6 +173,10 @@ function objKorbitData(){
     allArr.push(objKorbit)
 }
 
+
+/**
+ * 각 버튼에 넣어줄 필터함수들
+ */
 function filterPriceLow(){
     allArr.sort(function(a, b) {
         return Number(a.key3.replaceAll(",", "")) - Number(b.key3.replaceAll(",", ""))
@@ -223,7 +222,7 @@ function resetBundle(name) {
     allrank =1;
     removeAllchild();
     function callData() {
-        for(let j=0; j<4; j++){
+        for(let j=0; j<allArr.length; j++){
             let div = document.createElement('div');
             resultBox.appendChild(div).setAttribute("class", "dataBundle");
         let rankDiv = document.createElement('div')
@@ -236,7 +235,6 @@ function resetBundle(name) {
             }
             allrank++;  }
     }
-
     callData()
 }
 
@@ -253,17 +251,42 @@ function getKeyByValue(obj, value) {
 let coinImg = document.body.querySelector('#coinImg')
 
 function imgChange() {
+    if (allCoin[searchTextBox.value] !== undefined){
+        if(getKeyByValue(upbitEngObj,allCoin[searchTextBox.value]) !== undefined){
     coinImg.src = `https://cryptologos.cc/logos/${getKeyByValue(upbitEngObj,allCoin[searchTextBox.value]).toLowerCase()}-${allCoin[searchTextBox.value].toLowerCase()}-logo.png?v=024`;
+    } else {
+        coinImg.src = 'https://w7.pngwing.com/pngs/726/537/png-transparent-x-mark-computer-icons-check-mark-x-mark-thumbnail.png';
+    }
+}
 }
 
 
-// function firsCall() {
-//     changeName = 'BTC'
-//     removeAllchild()
-//     upbitLastCall(changeName)
-//     kobitPickCoin(changeName.toLowerCase())
-//     bithumbPickCoin(changeName)
-//     coinoneLastCall(changeName.toLowerCase())
-//     nowCoinName.innerText = '비트코인'
-// }
+/**
+ * 팝업박스
+ */
+
+let closeBtn = document.body.querySelector('#closeBtn')
+
+function closeBox() {
+    this.parentElement.style.display='none';
+}
+
+closeBtn.addEventListener('click',closeBox);
+
+
+let errorBtn = document.body.querySelector('#errorBtn')
+
+errorBtn.parentElement.style.display='none';
+
+function openErrorBox() {
+    errorBtn.parentElement.style.display='inline';
+    setTimeout(() => closeErrorBox(), 2000);
+}
+
+
+function closeErrorBox() {
+    errorBtn.parentElement.style.display='none';
+}
+
+errorBtn.addEventListener('click',closeErrorBox);
 

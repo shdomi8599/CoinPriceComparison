@@ -33,6 +33,7 @@ fetch('https://api.coinone.co.kr/public/v2/markets/KRW', coinoneOptions)
  * 심볼명 추출
  */
 function coinoneSymbol() {
+    coinoneCoinName = [];
     for (i of coinone.markets) {
         coinoneCoinName.push(i.target_currency.toLowerCase())
     }
@@ -43,6 +44,7 @@ function coinoneSymbol() {
  * KRW마켓에 모든 코인들의 데이터를 가져오기 위한 함수
  */
 function forCoinoneData(name) {
+if (coinoneCoinName.indexOf(changeName.toLowerCase()) !== -1){
     fetch('https://api.coinone.co.kr/public/v2/ticker_new/KRW', coinoneOptions)
         .then(response => response.json())
         .then(response => coinoneData = response.tickers)
@@ -51,6 +53,7 @@ function forCoinoneData(name) {
         .then(()=>callBundle(coinoneNowCoinLast))
         .then(objCoinoneData)
         .catch(err => console.error(err));
+}
 }
 
 /**

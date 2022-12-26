@@ -45,6 +45,7 @@ function bithumbPickCoin(name) {
     bithumbPick = [];
     bithumbNowCoin = [];
     bithumbCoinName = bithumbCoinList.filter(function (data) { return data.indexOf(name) !== -1 });
+    if (bithumbCoinName.indexOf(name) !== -1){
     fetch(`https://api.bithumb.com/public/transaction_history/${bithumbCoinName[0]}_KRW`, bithumbOptions)
         .then(response => response.json())
         .then(response => bithumbPick.push(response.data[19]))
@@ -57,6 +58,7 @@ function bithumbPickCoin(name) {
         .then(()=>callBundle(bithumbNowCoin))
         .then(objBithumbData)
         .catch(err => console.error(err));
+}
 }
 
 /**

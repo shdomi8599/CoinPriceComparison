@@ -45,7 +45,7 @@ function kobitCoinSearch(name) {
     for (i of korbitCoinNameLast) {
         if (i.includes(name) === true) {
             return korbitPick.push(i)
-        }
+        } 
     }
 }
 
@@ -57,6 +57,7 @@ function kobitPickCoin(name) {
     korbitNowCoin = [];
     korbitNowCoinLast = [];
     kobitCoinSearch(name);
+    if (korbitPick[0] !== undefined){
     fetch(`https://api.korbit.co.kr/v1/ticker/detailed?currency_pair=${korbitPick[0]}_krw`, korbitOptions)
         .then(response => response.json())
         .then(response => korbitNowCoin = response)
@@ -64,6 +65,7 @@ function kobitPickCoin(name) {
         .then(()=>callBundle(korbitNowCoinLast))
         .then(objKorbitData)
         .catch(err => console.error(err));
+    }
 }
 
 
