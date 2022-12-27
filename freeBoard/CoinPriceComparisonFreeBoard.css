@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 145vh;
+    overflow: auto;
+}
+
+/*   
+상단
+  */
+a {
+    text-decoration-line: none;
+    color: white;
+}
+
+header {
+    flex: 1;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+nav ul {
+    background-color: black;
+    height: 8vh;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    padding: 0;
+}
+
+nav ul li {
+    flex: 1;
+    list-style: none;
+    color: white;
+    text-align: center;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainMenu {
+
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+.mainMenu:hover {
+    color: yellow;
+}
+
+.mainMenu:active {
+    position: relative;
+    top: 0.3vh;
+}
+
+
+/*
+  하단
+  */
+
+footer {
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

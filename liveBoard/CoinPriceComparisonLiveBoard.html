@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="CoinPriceComparison.css"> -->
+    <link rel="stylesheet" href="CoinPriceComparisonLiveBoard.css">
+    <title>실시간 종목 토론 - 실코가</title>
+</head>
+
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../Home/CoinPriceComparison.html" class=mainMenu>홈</a></li>
+                <li><a href="CoinPriceComparisonLiveBoard.html" class=mainMenu>실시간 종목 토론</a></li>
+                <li><a href="../freeBoard/CoinPriceComparisonFreeBoard.html" class=mainMenu>자유게시판</a></li>
+                <li><a href="../signUp/CoinPriceComparisonSignUp.html" class=mainMenu>회원가입</a></li>
+                <li><a href="../login/CoinPriceComparisonLogin.html" class=mainMenu>로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div id="chatingBox">
+            <div id="newText">새 댓글 작성</div>
+            <div id="newTextBox">
+                <div id="contentBox">
+                    <textarea id="textBox" name="textBox" rows="5" cols="33">
+</textarea>
+             </div>
+                <div id="chatLastBox">
+                    <div id="chatLimit">글자수 제한<span id="textLimit"></span></div>
+                    <div id="chatButton"><span><button id="chatSign">등록</button></span></div>
+                </div>
+            </div>
+    </section>
+    <section>
+        <div id="displayBox">
+            <div id="liveChatList">
+                <div class="liveChat">
+                    <div class="liveChatId">kk3124</div>
+                    <div class="liveChatBox">비트살사람???</div>
+                    <div class="liveChatLike">
+                           <div><button><img class= "thumb" src="../img/thumb-up.png" alt="thumb-up"></button></div>
+                        <div>0</div>
+                        <div> <button><img class= "thumb" src="../img/thumb-down.png" alt="thumb-down"></button></div> 
+                        <div>0</div>
+                    </div>
+                </div>
+                <div class="liveChat">
+                    <div class="liveChatId">dswwe111</div>
+                    <div class="liveChatBox">난 안삼</div>
+                    <div class="liveChatLike">
+                           <div><button><img class= "thumb" src="../img/thumb-up.png" alt="thumb-up"></button></div>
+                        <div>0</div>
+                        <div> <button><img class= "thumb" src="../img/thumb-down.png" alt="thumb-down"></button></div> 
+                        <div>0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div id="copyright">copyright 신동민</div>
+
+    </footer>
+    <script src="CoinPriceComparisonLiveBoard.js"></script>
+</body>
+
+</html>

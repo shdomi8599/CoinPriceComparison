@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CoinPriceComparison.css">
+    <title>실시간 코인 가격 비교</title>
+</head>
+
+
+<body>
+    <header>
+      <nav>
+          <ul>
+              <li><a href="CoinPriceComparison.html" class=mainMenu>홈</a></li>
+              <li><a href="../liveBoard/CoinPriceComparisonLiveBoard.html"class=mainMenu>실시간 종목 토론</a></li>
+              <li><a href="../freeBoard/CoinPriceComparisonFreeBoard.html"class=mainMenu>자유게시판</a></li>
+              <li><a href="../signUp/CoinPriceComparisonSignUp.html"class=mainMenu>회원가입</a></li>
+              <li><a href="../login/CoinPriceComparisonLogin.html"class=mainMenu>로그인</a></li>
+          </ul>
+      </nav>
+  </header>
+  <section>
+  <div><h1>실시간 코인 가격 비교</h1></div>
+  <div id="searchCoin">
+      <input  type="text" id="searchCoinText" placeholder="코인이름을 적어주세요!">
+      <button id="searchCoin_btn">검색</button>
+  </div>
+  <div id="nowCoin"><span>현재 검색 코인 : <img id="coinImg"
+    src=""><span id="nowCoinName"></span> </span>
+  </div>
+  <div id="alert1">
+    <span id="closeBtn">&times;</span>
+    최초 검색에 나오는 순위는 거래소에서 데이터를 가져오는 순서입니다.<br>필터를 활용해 주세요.
+  </div>
+  <div id="alert2">
+    <span id="errorBtn">&times;</span>
+    4대 거래소 중 한 곳에라도 코인이 존재해야 합니다.<br>제대로 된 코인명을 적어주세요.
+  </div>
+  </section>
+    <section>
+      <div id="categoriBox">
+        <div class="categori">종합 순위</div>
+        <div class="categori">심볼명</div>
+        <div class="categori">거래소</div>
+        <div class="categori" id="priceBox"><span>현재 가격(KRW)</span><div><div id="filterPriceHigh">&#9650;</div><div id="filterPriceLow">&#9660;</div></div></div>
+        <div class="categori" id="volumeBox"><span>거래 대금(KRW)</span><div><div id="filterVolumeHigh">&#9650;</div><div id="filterVolumeLow">&#9660;</div></div></div>
+        <div class="categori">마지막 거래시각</div>
+        <div class="categori">거래 수수료율</div>
+      </div>
+      <div id="resultBox">
+      </div>
+    </section>
+    <footer>
+      <div id="copyright">copyright 신동민</div>
+
+  </footer>
+  <script src="CoinPriceComparisonCoinone.js"></script>
+  <script src="CoinPriceComparisonUpbit.js"></script>
+  <script src="CoinPriceComparisonBithumb.js"></script>
+  <script src="CoinPriceComparisonKorbit.js"></script>
+  <script src="CoinPriceComparisonAll.js"></script>
+  </body>
+
+</html>

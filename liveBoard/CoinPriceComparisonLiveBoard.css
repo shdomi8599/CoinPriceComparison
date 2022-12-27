@@ -1,0 +1,249 @@
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 145vh;
+    overflow: auto;
+}
+
+/*   
+상단
+  */
+a {
+    text-decoration-line: none;
+    color: white;
+}
+
+header {
+    flex: 1;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+nav ul {
+    background-color: black;
+    height: 8vh;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    padding: 0;
+}
+
+nav ul li {
+    flex: 1;
+    list-style: none;
+    color: white;
+    text-align: center;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainMenu {
+
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+.mainMenu:hover {
+    color: yellow;
+}
+
+.mainMenu:active {
+    position: relative;
+    top: 0.3vh;
+}
+
+
+/*
+  하단
+  */
+
+footer {
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*
+실시간 채팅 페이지
+*/
+
+#chatingBox {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    border: 2px solid rgb(133, 218, 203);
+    width: 50vw;
+    height: 30vh;
+    border-radius: 10px;
+    margin-top: 3vh;
+}
+
+#chatingBox #newText {
+    flex: 1;
+    border-bottom: 1.5px solid rgb(128, 117, 117);
+    padding-left: 2vw;
+    padding-top: 1.5vh;
+}
+
+#chatingBox #newTextBox {
+    flex: 8;
+    display: flex;
+    justify-content: baseline;
+    flex-direction: column;
+
+}
+
+#contentBox {
+    flex: 1;
+    padding: 0;
+    max-width: 44vw;
+    margin-top: 3vh;
+    margin-left: 3vw;
+    padding: 2vh 2vh;
+    border: 2px solid rgb(161, 121, 236);
+    max-height: 35vh;
+}
+
+
+#chatLastBox {
+    padding: 0;
+    max-width: 44vw;
+    max-height: 3vh;
+    margin-top: 3vh;
+    margin-left: 3vw;
+    margin-bottom: 3vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+#chatLimit {
+    font-size: 1rem;
+    
+}
+#chatSign {
+    font-size: 0.9rem;
+    border-radius: 10px;
+    background-color: white;
+    border: 1.5px solid black;
+}
+
+#textBox {
+    border: 1.5px solid black;
+    border-radius: 3px;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    padding: 1vh 0.7vw;
+}
+
+#textLimit {
+    margin-left: 1.5vh;
+}
+
+#displayBox {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    width: 50vw;
+    margin-top: 5vh;
+    height: 70vh; 
+    /* 높이를 반응형으로 댓글 개수가 늘어날때마다 높이를 늘려가야되나 고민중 */
+}
+
+#liveChatList {
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    flex-direction: column;
+    width: 50vw;
+    height: 190vh;
+    overflow: auto;
+        /* 높이를 반응형으로 댓글 개수가 늘어날때마다 높이를 늘려가야되나 고민중 */
+}
+
+
+.liveChat {
+    flex: 1;
+    border: 2px solid rgb(67, 187, 218);
+    margin: 1.5vh 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    height: 21vh ;
+    width: 65vh;
+    border-radius: 15px;
+    max-height: 21vh;
+    max-width: 65vh;
+}
+
+.liveChatId {
+    flex: 1;
+    margin: 1vh 2vh;
+    padding-left: 1vh;
+    font-size: 0.9rem;
+}
+
+.liveChatBox {
+    flex: 7;
+    border: 2px solid rgb(179, 120, 228);
+    margin: 0.2vh 2vh;
+    padding: 1vh;
+    font-size: 1rem;
+    border-radius: 5px;
+    overflow: auto;
+    min-height: 10vh;
+}
+
+.liveChatLike {
+    flex: 1;
+    margin: 1vh 2vh;
+    padding-left: 1vh;
+    text-align: right;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    flex-direction: row;
+}
+
+.liveChatLike div {
+    padding-right: 0.8vw;
+}
+.liveChatLike div button {
+    padding: 0; 
+    background-color: white;
+
+}
+
+.thumb {
+    height: 2.5vh;
+    width: auto;
+}

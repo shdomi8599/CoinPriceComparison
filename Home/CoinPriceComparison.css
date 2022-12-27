@@ -1,0 +1,423 @@
+@font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: 'NEXON Lv1 Gothic OTF';
+}
+
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 120vh;
+}
+
+/*   
+상단
+  */
+a {
+    text-decoration-line: none;
+    color: white;
+}
+
+header {
+    flex: 1;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+nav ul {
+    background-color: black;
+    height: 8vh;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    padding: 0;
+}
+
+nav ul li {
+    flex: 1;
+    list-style: none;
+    color: white;
+    text-align: center;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainMenu {
+
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+.mainMenu:hover {
+    color: yellow;
+}
+
+.mainMenu:active {
+    position: relative;
+    top: 0.3vh;
+}
+
+/*   
+중단
+  */
+
+#alert1 {
+    padding: 20px;
+    background-color: #f44336;
+    /* Red */
+    color: white;
+    margin-bottom: 15px;
+    position: fixed;
+    top: 300px;
+    left: 100px;
+    text-align: center;
+}
+
+
+#closeBtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+#closeBtn:hover {
+    color: black;
+}
+
+#alert2 {
+    padding: 20px;
+    background-color: #f44336;
+    /* Red */
+    color: white;
+    margin-bottom: 15px;
+    position: fixed;
+    top: 300px;
+    left: 1200px;
+    text-align: center;
+}
+
+#errorBtn {
+    margin-right: 20px;
+    color: white;
+    font-weight: bold;
+    float: left;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+#errorBtn:hover {
+    color: black;
+}
+
+section {
+    flex: 1;
+    width: 130vh;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1.1rem;
+}
+
+
+h1 {
+    font-size: 5rem;
+    padding-top: 8vh;
+}
+
+
+#searchCoin {
+    padding: 2vh 0;
+}
+
+#nowCoin {
+    font-size: 2rem;
+    padding: 2vh 0;
+}
+
+#searchCoin_btn {
+    font-size: 1.3rem;
+    border: 0.1rem solid black;
+    border-radius: 9px;
+    background-color: rgb(255, 255, 255);
+}
+
+#searchCoinText {
+    font-size: 2rem;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+#searchCoin_btn:active {
+    position: relative;
+    top: 0.1vh;
+}
+
+#coinImg {
+    display: inline-block;
+    height: auto;
+    width: 3vh;
+    position: relative;
+    top: 0.3vh;
+}
+
+#time {
+    position: absolute;
+    top: 42vh;
+    left: 86.5vh;
+}
+
+#volumeBox {
+    display: flex;
+    flex-direction: row;
+}
+
+#volumeBox span {
+    display: inline-block;
+    padding-top: 6px;
+    padding-right: 2px;
+}
+
+#priceBox {
+    display: flex;
+    flex-direction: row;
+}
+
+#priceBox span {
+    display: inline-block;
+    padding-top: 6px;
+    padding-right: 2px;
+}
+
+#priceBox div {
+    font-size: 15px;
+}
+
+#volumeBox div {
+    font-size: 15px;
+}
+
+
+#filterPriceLow:active,
+#filterVolumeLow:active {
+    position: relative;
+    top: 0.3vh;
+}
+
+#filterVolumeHigh:active,
+#filterPriceHigh:active {
+    position: relative;
+    bottom: 0.3vh;
+}
+
+#filterPriceLow:hover,#filterVolumeLow:hover,#filterVolumeHigh:hover,#filterPriceHigh:hover {
+    cursor: pointer;
+}
+
+
+#categoriBox {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 130vh;
+    border-bottom: 1px solid black;
+    padding-bottom: 3vh;
+}
+
+
+#resultBox {
+    flex: 8;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 130vh;
+    flex-direction: column;
+}
+
+.categori {
+    flex: 1;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.resultData {
+    flex: 1;
+    text-align: center;
+}
+
+.dataBundle {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 130vh;
+    flex-direction: row;
+    padding: 5vh 0;
+    border-bottom: 1px solid rgb(204, 203, 203);
+}
+
+/*
+  하단
+  */
+
+footer {
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*
+실시간 채팅 페이지
+*/
+
+#chatingBox {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 50vw;
+    height: 30vh;
+    margin-top: 10vh;
+}
+
+#chatingBox #newText {
+    flex: 1;
+    border-bottom: 1px solid black;
+    padding-left: 2vw;
+    padding-top: 1.5vh;
+}
+
+#chatingBox #newTextBox {
+    flex: 8;
+    display: flex;
+    justify-content: baseline;
+    flex-direction: column;
+
+}
+
+#contentBox {
+    flex: 1;
+    padding: 0;
+    max-width: 44vw;
+    margin-top: 3vh;
+    margin-left: 3vw;
+    padding: 2vh 2vh;
+    border: 1px solid black;
+    max-height: 30vh;
+}
+
+
+#chatLastBox {
+    padding: 0;
+    max-width: 44vw;
+    max-height: 3vh;
+    margin-top: 4vh;
+    margin-left: 3vw;
+    margin-bottom: 3vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+#chatSign {
+    font-size: 1.3rem;
+}
+
+#textBox {
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    padding: 1vh 0.7vw;
+}
+
+#textLimit {
+    margin-left: 1.5vh;
+}
+
+#displayBox {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 50vw;
+    margin-top: 5vh;
+    height: 100vh;
+}
+
+#liveChatList {
+    display: flex;
+    justify-content: baseline;
+    align-items: stretch;
+    flex-direction: column;
+    width: 50vw;
+    height: 75vh;
+}
+
+
+.liveChat {
+    flex: 1;
+    border: 1px solid red;
+    margin: 1.5vh 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    max-width: 50vw;
+    max-height: 20vh;
+}
+
+.liveChatId {
+    flex: 1;
+    border: 1px solid red;
+    margin: 1vh 2vh;
+    padding-left: 1vh;
+}
+
+.liveChatBox {
+    flex: 5;
+    border: 1px solid red;
+    margin: 1vh 2vh;
+    padding: 1vh;
+}
+
+.liveChatLike {
+    flex: 1;
+    border: 1px solid red;
+    margin: 1vh 2vh;
+    padding-left: 1vh;
+    text-align: right;
+}
