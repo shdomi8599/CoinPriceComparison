@@ -154,6 +154,11 @@ footer {
     border: 1.5px solid black;
 }
 
+#chatSign:active {
+    position: relative;
+    top: 0.2vh;
+}
+
 #textBox {
     border: 1.5px solid black;
     border-radius: 3px;

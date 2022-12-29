@@ -175,6 +175,12 @@ h1 {
     text-align: center;
 }
 
+#searchCoinText:focus {
+    border : 0;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
 #searchCoin_btn:active {
     position: relative;
     top: 0.1vh;

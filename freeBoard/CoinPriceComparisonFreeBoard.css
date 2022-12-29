@@ -87,3 +87,160 @@ footer {
     align-items: center;
 }
 
+/*중단*/
+
+section {
+
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    height: 110vh;
+    width: 140vh;
+    flex-direction: column;
+}
+
+#boardH1 {
+
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 2rem;
+    padding-left: 1.5vw;
+}
+
+#mainBoard{
+
+    flex: 8;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+}
+
+#boardHot {
+
+    flex :2;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+#hotList {
+    flex:1;
+    margin: 3vh 5vw;
+
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1vw;
+    padding-top: 1vh;
+}
+#hotList div {
+    flex: 1;
+border-bottom: 1px solid rgb(168, 164, 164);
+margin-bottom: 1vh;
+padding: 0.2vh 0;
+
+}
+ 
+#boardList {
+
+    flex: 7;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    justify-content: center;
+    margin:6vh;
+    padding: 0.5vh;
+
+}
+
+#boardList div {
+    flex:  1;
+    border-bottom: 1px dashed black;
+    padding-top: 1vh;
+    padding-bottom: 1.8vh;
+    padding-left: 1.6vw;
+    margin-bottom: 1vh;
+}
+
+
+#boardPlus{
+    flex: 1;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#plusBox {
+    flex: 1;
+    display: flex;
+    align-items: left;
+    justify-content: space-between;
+    margin:-4vh 7vw 0;
+    
+}
+
+
+
+#plusSerachTextBox {
+    border: 1px solid black;
+    border : 0;
+    border-bottom: 1px solid black;
+    padding: 0 1vw 1vh;
+    font-size: 1.1rem;
+    margin-right: 0.8vw;
+}
+
+#plusSerachTextBox:focus {
+    border : 0;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+
+#plusSerach button {
+    background-color: white;
+    border: 1px solid black;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+#plusSerach button:active {
+    position: relative;
+    top: 0.3vh;
+}
+
+#writeBoard button {
+    font-size: 1.3rem;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+#writeBoard button:active {
+    position: relative;
+    top: 0.3vh;
+}
+
+#pageList {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+#pageList button {
+    background-color: white;
+}
+
+.arrow {
+    height: auto;
+    width: 2.5vh;
+    background-color: white;
+    
+}    
+#pageList span {
+    padding: 0 5vw;
+}
