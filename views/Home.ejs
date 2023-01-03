@@ -1,30 +1,8 @@
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Jua&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="CoinPriceComparison.css">
-    <title>실시간_코인_가격_비교</title>
+<%- include('partials/head')%>
+<link rel="stylesheet" href="/css/CoinPriceComparison.css">
+<title>실시간 코인 가격 비교</title>
 </head>
-
-
-<body>
-    <header>
-      <nav>
-          <ul>
-              <li><a class=mainMenu>홈</a></li>
-              <li><a class=mainMenu>코인종목토론방</a></li>
-              <li><a class=mainMenu>자유게시판</a></li>
-              <li><a class=mainMenu>회원가입</a></li>
-              <li><a class=mainMenu>로그인</a></li>
-          </ul>
-      </nav>
-  </header>
+<%- include('partials/navbar')%>
   <section>
   <div><h1>실시간 코인 가격 비교</h1></div>
   <div id="searchCoin">
@@ -56,15 +34,12 @@
       <div id="resultBox">
       </div>
     </section>
-    <footer>
-      <div id="copyright">copyright 신동민</div>
-
-  </footer>
-  <script src="CoinPriceComparisonCoinone.js"></script>
-  <script src="CoinPriceComparisonUpbit.js"></script>
-  <script src="CoinPriceComparisonBithumb.js"></script>
-  <script src="CoinPriceComparisonKorbit.js"></script>
-  <script src="CoinPriceComparisonAll.js"></script>
+    <%- include('partials/footer')%>
+  <script src="/js/CoinPriceComparisonCoinone.js"></script>
+  <script src="/js/CoinPriceComparisonUpbit.js"></script>
+  <script src="/js/CoinPriceComparisonBithumb.js"></script>
+  <script src="/js/CoinPriceComparisonKorbit.js"></script>
+  <script src="/js/CoinPriceComparisonAll.js"></script>
   </body>
 
 </html>

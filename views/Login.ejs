@@ -1,0 +1,25 @@
+<%- include('partials/head')%>
+  <link rel="stylesheet" href="/css/CoinPriceComparisonLogin.css">
+  <title>로그인 - 실코가</title>
+  </head>
+
+  <%- include('partials/navbar')%>
+    <section>
+      <form action="/" method="post" id="form" onSubmit="return checkForm()">
+        <h1>실시간 코인 가격 비교</h1>
+        <br>
+        <label for="id" class="labelForm">ID</label>
+        <input type="text" id="id" name="id" placeholder="아이디" class="signUpForm">
+        <br>
+        <label for="pw" class="labelForm">PW</label>
+        <input type="password" id="pw" name="pw" placeholder="비밀번호" class="signUpForm">
+        <br>
+        <button id="signUpButton">로그인</button>     
+      </form>
+    </section>
+    <%- include('partials/footer')%>
+      <script src="/js/CoinPriceComparisonLogin.js"></script>
+      </body>
+      </html>
+      <!-- form.id.value,form.pw.value 과 members의 각 인덱스의 id와 pw가 모두 일치하는 데이터를 찾아야함  -->
+     
