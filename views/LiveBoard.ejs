@@ -7,7 +7,13 @@
 <%- include('partials/navbar')%>
     <section>
         <div id="chatingBox">
-            <div id="newText">새 댓글 작성</div>
+            <div id="newText">새 댓글 작성
+        
+                <% if (typeof id != 'undefined'){ %>
+                    <span>/ ID : <span id="idBox"><%=id%></span></span>
+                  <% } %>
+            
+            </div>
             <div id="newTextBox">
                 <div id="contentBox">
                     <textarea id="textBox" name="textBox" rows="5" cols="33">
@@ -22,26 +28,6 @@
     <section>
         <div id="displayBox">
             <div id="liveChatList">
-                <div class="liveChat">
-                    <div class="liveChatId">kk3124</div>
-                    <div class="liveChatBox">비트살사람???</div>
-                    <div class="liveChatLike">
-                           <div><button><img class= "thumb" src="/img/thumb-up.png" alt="thumb-up"></button></div>
-                        <div>0</div>
-                        <div> <button><img class= "thumb" src="/img/thumb-down.png" alt="thumb-down"></button></div> 
-                        <div>0</div>
-                    </div>
-                </div>
-                <div class="liveChat">
-                    <div class="liveChatId">dswwe111</div>
-                    <div class="liveChatBox">난 안삼</div>
-                    <div class="liveChatLike">
-                           <div><button><img class= "thumb" src="/img/thumb-up.png" alt="thumb-up"></button></div>
-                        <div>0</div>
-                        <div> <button><img class= "thumb" src="/img/thumb-down.png" alt="thumb-down"></button></div> 
-                        <div>0</div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

@@ -30,6 +30,126 @@ a {
     color: white;
 }
 
+#viewBox {
+    border: 1px solid black;
+    display: flex;
+    justify-content: baseline;
+    align-items: stretch;
+    flex-direction: column;
+}
+
+#viewTitle {
+    flex: 1;
+    border: 1px solid black;
+    padding: 10vh;
+    font-size: 3rem;
+}
+
+#viewContent{
+    flex: 9;
+    border: 1px solid black;
+    padding: 7vh;
+    font-size: 2rem;
+}
+
+#viewButtonBox{
+    flex: 1;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+}
+#viewButtonBox div{
+    flex: 1;
+}
+
+#deleteButton {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 2rem;
+}
+
+
+#deleteButton:active {
+    position: relative;
+    top: 0.3vh; 
+}
+
+
+
+#editText{
+    color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 2rem;
+}
+
+#editText:active {
+    position: relative;
+    top: 0.3vh; 
+}
+
+#editBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+#editTitle {
+    flex: 1;
+
+}
+
+#editContent {
+    flex: 1;
+
+}
+
+#editButton {
+    margin-top: 5vh;
+    text-align: center;
+}
+#editButton button {
+    border: 1px solid black;
+    font-size: 2rem;
+    background-color: white;
+    border-radius: 10px;
+}
+#editTitleBox {
+    border: 1px solid black;
+    font-size: 1.7rem;
+    margin-bottom: 10vh;
+    text-align: left;
+}
+
+#editContentBox{
+    border: 1px solid black;
+    font-size: 2rem;
+    text-align: left;
+}
+
+#commentLink {
+    color: black;
+}
+
+#aText {
+    color: black;
+}
+
+#idText {
+    margin-left: 3vw;
+}
+
+#commentRank {
+    display: inline-block;
+    margin-right: 3vw;
+}
+
 header {
     flex: 1;
     position: fixed;
@@ -110,7 +230,7 @@ section {
     padding-left: 1.5vw;
 }
 
-#mainBoard{
+#mainBoard {
 
     flex: 8;
     display: flex;
@@ -121,54 +241,57 @@ section {
 
 #boardHot {
 
-    flex :2;
+    flex: 2;
     display: flex;
     justify-content: center;
     align-items: stretch;
 }
 
 #hotList {
-    flex:1;
+    flex: 1;
     margin: 3vh 5vw;
 
     display: flex;
     align-items: left;
     flex-direction: column;
-    justify-content: center;
+    justify-content: baseline;
     padding-left: 1vw;
     padding-top: 1vh;
 }
+
 #hotList div {
     flex: 1;
-border-bottom: 1px solid rgb(168, 164, 164);
-margin-bottom: 1vh;
-padding: 0.2vh 0;
+    border-bottom: 1px solid rgb(168, 164, 164);
+    margin-bottom: 1vh;
+    padding: 0.2vh 0;
+    max-height: 3vh;
 
 }
- 
+
 #boardList {
 
     flex: 7;
     display: flex;
     align-items: left;
     flex-direction: column;
-    justify-content: center;
-    margin:6vh;
+    justify-content: baseline;
+    margin: 6vh;
     padding: 0.5vh;
 
 }
 
 #boardList div {
-    flex:  1;
+    flex: 1;
     border-bottom: 1px dashed black;
     padding-top: 1vh;
     padding-bottom: 1.8vh;
     padding-left: 1.6vw;
     margin-bottom: 1vh;
+    max-height: 5vh;
 }
 
 
-#boardPlus{
+#boardPlus {
     flex: 1;
     display: flex;
     align-items: left;
@@ -181,15 +304,15 @@ padding: 0.2vh 0;
     display: flex;
     align-items: left;
     justify-content: space-between;
-    margin:-4vh 7vw 0;
-    
+    margin: -4vh 7vw 0;
+
 }
 
 
 
 #plusSerachTextBox {
     border: 1px solid black;
-    border : 0;
+    border: 0;
     border-bottom: 1px solid black;
     padding: 0 1vw 1vh;
     font-size: 1.1rem;
@@ -197,7 +320,7 @@ padding: 0.2vh 0;
 }
 
 #plusSerachTextBox:focus {
-    border : 0;
+    border: 0;
     outline: none;
     border-bottom: 1px solid black;
 }
@@ -239,8 +362,9 @@ padding: 0.2vh 0;
     height: auto;
     width: 2.5vh;
     background-color: white;
-    
-}    
+
+}
+
 #pageList span {
     padding: 0 5vw;
 }

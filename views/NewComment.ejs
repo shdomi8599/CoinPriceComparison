@@ -1,0 +1,22 @@
+<%- include('partials/head')%>
+<link rel="stylesheet" href="/css/CoinPriceComparisonNewComment.css">
+    <title>글쓰기 - 실코가 </title>
+    </head>
+    <%- include('partials/navbar')%>
+    <h1>새 글 작성</h1>
+    <form action="/FreeBoard" method="post">
+        <section>
+            <label for="commentTitle">제목 : </label>
+            <input type="text" id="commentTitle" placeholder="글의 제목을 적어주세요." name="commentTitle">
+        </section>
+        <section>
+            <label for="comment">내용</label>
+            <br>
+            <textarea name="comment" id="comment" cols="30" rows="5" placeholder="글의 내용을 적어주세요."></textarea>
+        </section>
+       <button>작성하기</button>
+    </form>
+        <%- include('partials/footer')%>
+            </body>
+
+            </html>

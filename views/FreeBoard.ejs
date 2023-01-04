@@ -1,47 +1,57 @@
 <%- include('partials/head')%>
     <link rel="stylesheet" href="/css/CoinPriceComparisonFreeBoard.css">
     <title>자유게시판 - 실코가</title>
-</head>
+    </head>
 
-<%- include('partials/navbar')%>
+    <%- include('partials/navbar')%>
 
-  <section>
-        <div id="boardH1">
-            <h1>자유게시판</h1>
-        </div>
-        <div id="mainBoard">
-            <div id="boardHot">
-                <div id="hotList">
-                    <div>인기글1</div>
-                    <div>인기글2</div>
-                    <div>인기글3</div>
-                    <div>인기글4</div>
+        <section>
+            <div id="boardH1">
+                <h1>자유게시판</h1>
+            </div>
+            <h2 id="idText">
+
+                <% if (typeof id !='undefined' ){ %>
+                    <span> ID : <%=id%><span>
+                                <% } %>
+            </h2>
+            <div id="mainBoard">
+                <div id="boardHot">
+                    <div id="hotList">
+                        <div>인기글1</div>
+                        <div>인기글2</div>
+                        <div>인기글3</div>
+                        <div>인기글4</div>
+                    </div>
+                </div>
+                <div id="boardList">
+                    <% if (typeof boardList !='undefined' ){ %>
+                        <%for (let m of boardList) {%>
+                            <div>
+                                <span id="commentRank">
+                                    <%=boardList.indexOf(m)+1%>
+                                </span>
+                                <a href="/FreeBoard/<%=m.commentId%>" id="commentLink">
+                                    <%=m.commentTitle%>
+                                </a>
+                            </div>
+                            <% }%>
+                                <% } %>
                 </div>
             </div>
-            <div id="boardList">
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
-                <div>6</div>
-                <div>7</div>
-                <div>8</div>
-                <div>9</div>
-                <div>10</div>
-                <div>11</div>
-            </div>
-        </div>
-        <div id="boardPlus">
-            <div id="plusBox">
-                <div id="plusSerach"><input type="text" id="plusSerachTextBox"><span><button>검색</button></span></div>
-                <div id="writeBoard"><button>글쓰기</button></div>
-            </div>
-            <div id="pageList"><button><img src="../img/arrow-big-left.png" class= "arrow"alt=""></button><span>1/5</span><button><img src="../img/arrow-big-right.png" class= "arrow"alt=""></button>
-        </div>
-  </section>
-  <%- include('partials/footer')%>
-  <script src="/js/CoinPriceComparisonFreeBoard.js"></script>
-  </body>
+            <div id="boardPlus">
+                <div id="plusBox">
+                    <div id="plusSerach"><input type="text" id="plusSerachTextBox"><span><button>검색</button></span>
+                    </div>
+                    <div id="writeBoard"><button><a id="aText" href="NewComment">글쓰기</a></button></div>
+                </div>
+                <div id="pageList"><button><img src="../img/arrow-big-left.png" class="arrow"
+                            alt=""></button><span>1/5</span><button><img src="../img/arrow-big-right.png" class="arrow"
+                            alt=""></button>
+                </div>
+        </section>
+        <%- include('partials/footer')%>
+            <script src="/js/CoinPriceComparisonFreeBoard.js"></script>
+            </body>
 
-</html>
+            </html>

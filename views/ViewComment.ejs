@@ -1,0 +1,21 @@
+<%- include('partials/head')%>
+    <link rel="stylesheet" href="/css/CoinPriceComparisonFreeBoard.css">
+    <title>자유게시판</title>
+</head>
+<%- include('partials/navbar')%>
+
+<section id="viewBox">
+    <div id="viewTitle">제목: <%=comment.commentTitle%></div>
+    <div id="viewContent"><%=comment.comment%></div>
+    <div id="viewButtonBox">
+        <div><a href="/FreeBoard/<%=comment.commentId%>/edit" id="editText">수정하기</a></div>
+    <div>
+        <form method="post" action="/FreeBoard/<%=comment.commentId%>?_method=DELETE">
+        <button id="deleteButton">삭제하기</button>
+    </form>
+</div>
+</div>
+</section>
+    <%- include('partials/footer')%>
+</body>
+</html>

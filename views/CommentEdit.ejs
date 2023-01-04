@@ -1,0 +1,25 @@
+<%- include('partials/head')%>
+    <link rel="stylesheet" href="/css/CoinPriceComparisonFreeBoard.css">
+    <title>내용 수정하기</title>
+    </head>
+    <%- include('partials/navbar')%>
+        <section id="editBox">
+            <form method="post" action="/FreeBoard/<%=comment.commentId%>?_method=PATCH">
+                <div id="editTitle">
+                    <textarea name="title" id="editTitleBox" cols="70" rows="2">
+                        <%=comment.commentTitle%>
+                    </textarea>
+                </div>
+                <div id="editContent">
+                    <textarea name="comment" id="editContentBox" cols="70" rows="10">
+            <%= comment.comment %>
+        </textarea>
+        <br>
+                   <div id="editButton"><button>수정하기</button></div>
+            </form>
+            </div>
+        </section>
+        <%- include('partials/footer')%>
+            </body>
+
+            </html>
