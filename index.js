@@ -5,23 +5,59 @@ const path = require('path');
 const { v4: uuid } = require('uuid');
 const cors = require('cors');
 
-app.use(cors({
-    origin: '*',
-    methods: 'OPTION, GET, POST, PUT, PATCH, DELETE',
-    credentials: true,
-}
-));
-
+app.use(cors())
 app.use(express.json()) // for parsing application/json // 밑에랑 비슷한 기능을 하는듯한데 제대로 찾아봐야할듯
 app.use(express.urlencoded({ extended: true })) // 전달받는 데이터를 req.body에 저장해주는 기능인듯?
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, '/views')) //html같은 ejs파일들을 위한 경로설정법인데 안해도되는듯?
-
 const members = [];
 let boardList = [];
 const myId = [];
+
+//코빗
+let korbitDataArr;
+async function korbitData() {
+    korbitDataArr = await fetch('https://api.korbit.co.kr/v1/ticker/detailed/all', { method: 'GET', headers: { accept: 'application/json' } })
+        .then(response => response.json())
+}
+
+let korbitPickDataArr;
+async function korbitPickData(name) {
+    korbitPickDataArr = await fetch(`https://api.korbit.co.kr/v1/ticker/detailed?currency_pair=${name}_krw`, { method: 'GET', headers: { accept: 'application/json' } })
+        .then(response => response.json())
+}
+
+app.get('/kobitData', (req, res) => {
+    korbitData()
+    const { currency_pair } = req.query
+    if (currency_pair) {
+        korbitPickData(currency_pair)
+        res.json(korbitPickDataArr)
+    }
+    return res.json(korbitDataArr)
+})
+//코인원
+let coinOneDataArr;
+async function coinOneData() {
+    coinOneDataArr = await fetch('https://api.coinone.co.kr/public/v2/markets/KRW', { method: 'GET', headers: { accept: 'application/json' } })
+        .then(response => response.json())
+}
+
+let coinOneKrwArr;
+async function coinOneKrwData() {
+    coinOneKrwArr = await fetch(`https://api.coinone.co.kr/public/v2/ticker_new/KRW`, { method: 'GET', headers: { accept: 'application/json' } })
+        .then(response => response.json())
+}
+app.get('/coinoneData', (req, res) => {
+    coinOneData()
+    return res.json(coinOneDataArr)
+})
+app.get('/coinoneKrwData', (req, res) => {
+    coinOneKrwData()
+    return res.json(coinOneKrwArr)
+})
 
 app.get('/', (req, res) => {
     if (myId.length) {

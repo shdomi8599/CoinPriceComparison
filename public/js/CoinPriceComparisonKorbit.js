@@ -17,7 +17,7 @@ let korbitNowCoinLast = [];
 
 const korbitOptions = { method: 'GET', headers: { accept: 'application/json' } };
 
-fetch('https://api.korbit.co.kr/v1/ticker/detailed/all', korbitOptions)
+fetch('http://localhost:8080/kobitData', korbitOptions)
     .then(response => response.json())
     .then(response => korbit = response)
     .then(korbit => korbitCoinList = Object.keys(korbit))
@@ -35,7 +35,7 @@ function korbitSymbol() {
     for (i of korbitCoinName) {
         korbitCoinNameLast.push(i.slice(0, -3))
     }
-    korbitCoinNameLast.splice(28,1)
+    korbitCoinNameLast.splice(28, 1)
 }
 
 /**
@@ -45,7 +45,7 @@ function kobitCoinSearch(name) {
     for (i of korbitCoinNameLast) {
         if (i.includes(name) === true) {
             return korbitPick.push(i)
-        } 
+        }
     }
 }
 
@@ -57,14 +57,14 @@ function kobitPickCoin(name) {
     korbitNowCoin = [];
     korbitNowCoinLast = [];
     kobitCoinSearch(name);
-    if (korbitPick[0] !== undefined){
-    fetch(`https://api.korbit.co.kr/v1/ticker/detailed?currency_pair=${korbitPick[0]}_krw`, korbitOptions)
-        .then(response => response.json())
-        .then(response => korbitNowCoin = response)
-        .then(forKorbitPick)
-        .then(()=>callBundle(korbitNowCoinLast))
-        .then(objKorbitData)
-        .catch(err => console.error(err));
+    if (korbitPick[0] !== undefined) {
+        fetch(`http://localhost:8080/kobitData?currency_pair=${korbitPick[0]}`, korbitOptions)
+            .then(response => response.json())
+            .then(response => korbitNowCoin = response)
+            .then(forKorbitPick)
+            .then(() => callBundle(korbitNowCoinLast))
+            .then(objKorbitData)
+            .catch(err => console.error(err));
     }
 }
 

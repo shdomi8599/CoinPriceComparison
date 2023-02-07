@@ -20,7 +20,7 @@ const coinoneOptions = { method: 'GET', headers: { accept: 'application/json' } 
 
 function coinoneLastCall(name) {
     coinoneNowCoinLast = [];
-fetch('https://api.coinone.co.kr/public/v2/markets/KRW', coinoneOptions)
+fetch('http://localhost:8080/coinoneData', coinoneOptions)
     .then(response => response.json())
     .then(response => coinone = response)
     .then(coinoneSymbol)
@@ -45,7 +45,7 @@ function coinoneSymbol() {
  */
 function forCoinoneData(name) {
 if (coinoneCoinName.indexOf(changeName.toLowerCase()) !== -1){
-    fetch('https://api.coinone.co.kr/public/v2/ticker_new/KRW', coinoneOptions)
+    fetch('http://localhost:8080/coinoneKrwData', coinoneOptions)
         .then(response => response.json())
         .then(response => coinoneData = response.tickers)
         .then(()=> coinoneDataSerach(name))
